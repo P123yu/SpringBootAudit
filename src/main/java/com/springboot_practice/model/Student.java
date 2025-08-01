@@ -1,26 +1,19 @@
 package com.springboot_practice.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.time.LocalDateTime;
 
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 
+@Entity
 @Table(name="student")
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@EntityListeners(AuditingEntityListener.class)
-public class Student {
+public class Student extends BaseClass{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,13 +30,6 @@ public class Student {
     private Float marks;
 
     @ColumnDefault("false")
-    private Boolean pass;
-
-    @CreationTimestamp
-    @Column(updatable = false)
-    private LocalDateTime createdAt;
-
-    @LastModifiedDate
-    private LocalDateTime modifiedAt;
+    private Boolean pass=false;
 
 }
