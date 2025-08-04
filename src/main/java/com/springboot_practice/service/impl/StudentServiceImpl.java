@@ -6,6 +6,7 @@ import com.springboot_practice.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -39,6 +40,11 @@ public class StudentServiceImpl implements StudentService {
         else{
             throw new NoSuchElementException("element not found for update");
         }
+    }
+
+    @Override
+    public List<Student> getAllStudent() {
+        return studentRepo.findAll();
     }
 
 
